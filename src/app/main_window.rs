@@ -1,24 +1,25 @@
 use std::hash::{Hash, Hasher};
+use std::sync::{Arc, Mutex};
 
+use convers::convert::magic_convert;
 use egui::{
-    Align2, Area, Color32, FontDefinitions, FontFamily, Frame, Id, Margin, Rounding, ScrollArea,
-    Stroke, Style, TextStyle, Vec2, Vec2b,
+    Align2, Area, Color32, FontDefinitions, FontFamily, Frame, Id, Margin, RichText, Rounding,
+    ScrollArea, Stroke, Style, TextStyle, Vec2, Vec2b,
 };
-
-use crate::app::utils::translate;
-
-use super::utils::{parse_args, render_ansi_text};
+use tokio::runtime::Runtime;
 
 pub struct MainWindow {
     prompt: String,
-    response: String,
+    response: Arc<Mutex<String>>,
+    runtime: Arc<Runtime>,
 }
 
 impl Default for MainWindow {
     fn default() -> Self {
         Self {
             prompt: String::new(),
-            response: String::new(),
+            response: Arc::new(Mutex::new(String::new())),
+            runtime: Arc::new(Runtime::new().unwrap()),
         }
     }
 }
@@ -90,10 +91,16 @@ impl eframe::App for MainWindow {
                             .stick_to_right(true)
                             .show(ui, |ui| {
                                 ui.set_width(600.);
-                                render_ansi_text(ui, &self.response);
+                                let response = self.response.lock().unwrap().clone();
+                                ui.label(
+                                    RichText::new(&response)
+                                        .size(24.)
+                                        .color(Color32::from_rgb(205, 214, 244)),
+                                );
                             });
                     });
             });
+
         ctx.input(|i| {
             if i.key_pressed(egui::Key::Escape) {
                 let ctx = ctx.clone();
@@ -112,25 +119,22 @@ impl eframe::App for MainWindow {
                 }
             }
             if i.key_pressed(egui::Key::Enter) {
-                let args = match parse_args(&self.prompt) {
-                    Ok(args) => args,
-                    Err(e) => {
-                        self.response = e.to_string();
-                        return;
+                let prompt = self.prompt.clone();
+                let response = Arc::clone(&self.response);
+                let runtime = Arc::clone(&self.runtime);
+                runtime.spawn(async move {
+                    match magic_convert(&prompt).await {
+                        Ok(resp) => {
+                            let mut response_lock = response.lock().unwrap();
+                            *response_lock = resp;
+                        }
+                        Err(e) => {
+                            let mut response_lock = response.lock().unwrap();
+                            *response_lock = e.to_string();
+                        }
                     }
-                };
-
-                let result = translate(args);
-                match result {
-                    Ok(resp) => {
-                        self.prompt.clear();
-
-                        self.response = resp;
-                    }
-                    Err(e) => {
-                        self.response = e.to_string();
-                    }
-                }
+                });
+                self.prompt.clear();
             }
         });
     }

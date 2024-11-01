@@ -2,11 +2,11 @@ use app::main_window::MainWindow;
 use single_instance::SingleInstance;
 
 mod app;
-const APP_NAME: &str = "Ray Translate";
+const APP_NAME: &str = "convers_prompt";
 
 fn main() {
     env_logger::init();
-    let instance = SingleInstance::new("ray_translate_veaquer").unwrap();
+    let instance = SingleInstance::new("convers_prompt").unwrap();
 
     // Check if another instance is already running
     let options = eframe::NativeOptions {
@@ -18,7 +18,7 @@ fn main() {
         ..Default::default()
     };
     if instance.is_single() {
-        eframe::run_native(
+        let _ = eframe::run_native(
             APP_NAME,
             options,
             Box::new(|cc| {

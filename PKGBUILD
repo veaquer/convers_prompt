@@ -1,13 +1,13 @@
-pkgname=ray_translate
-pkgver="beta"
+pkgname=convers_prompt
+pkgver="latest"
 pkgrel=1
-pkgdesc="A simple raycast like translator from prompt."
+pkgdesc="prompt quick access gui app, that use convers magic_convert"
 arch=('x86_64')
 license=('MIT')
 depends=('rust' 'cargo' 'translate-shell')
 makedepends=('rust' 'cargo')
-source=("$pkgname-$pkgver.tar.gz::https://github.com/veaquer/ray_translate/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('6b86423e62cf70ce34d2ca39dea824ad09e023f1a9bad6d79e703658082f9fe0')
+source=("$pkgname-$pkgver.tar.gz::https://github.com/veaquer/convers_prompt/archive/refs/tags/$pkgver.tar.gz")
+sha256sums=('cf6bcef9611ce5cad2bc4c7dfc4e397784a33b5fe10a8dfdcb4a7dd804f2c2e1')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
@@ -16,5 +16,5 @@ build() {
 
 package() {
     cd "$srcdir/$pkgname-$pkgver"
-    install -Dm755 "target/release/ray_translate" "$pkgdir/usr/bin/ray_translate"
+    install -Dm755 "target/release/$pkgname" "$pkgdir/usr/bin/$pkgname"
 }
