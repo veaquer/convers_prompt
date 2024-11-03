@@ -4,10 +4,16 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-convers = "0.1.2"
+convers = "0.1.5"
 eframe = "0.29.1"
 egui = "0.29.1"
 egui_extras = "0.29.1"
 env_logger = "0.11.5"
 single-instance = "0.3.3"
 tokio = "1.41.0"
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = "symbols"
+opt-level = "z"

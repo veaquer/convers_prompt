@@ -760,9 +760,9 @@ dependencies = [
 
 [[package]]
 name = "convers"
-version = "0.1.2"
+version = "0.1.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "7b165fab5f604b0348d35689d0cff5fffcbcbbf10bcab73c5e5de7a72b9fbcbf"
+checksum = "de117ee42e02c78d47ceb0344a8f4847fa568b3516aebd9b7e5195b099ba306d"
 dependencies = [
  "regex",
  "reqwest",

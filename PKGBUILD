@@ -7,7 +7,7 @@ license=('MIT')
 depends=('rust' 'cargo' 'translate-shell')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/veaquer/convers_prompt/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('cf6bcef9611ce5cad2bc4c7dfc4e397784a33b5fe10a8dfdcb4a7dd804f2c2e1')
+sha256sums=('3a15da3cb865d75ba2548bf7364fa1374b683e578f1113c28ab3b639355fbe3a')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
