@@ -1,4 +1,5 @@
 use app::main_window::MainWindow;
+use egui::Vec2;
 use single_instance::SingleInstance;
 
 mod app;
@@ -12,8 +13,7 @@ fn main() {
     let options = eframe::NativeOptions {
         viewport: egui::ViewportBuilder::default()
             .with_decorations(false)
-            .with_transparent(true)
-            .with_fullscreen(true)
+            .with_inner_size(Vec2::new(400., 300.))
             .with_always_on_top(),
         ..Default::default()
     };
