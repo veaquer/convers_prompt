@@ -14,6 +14,7 @@ yay -S ray_translate
 ```
 git clone https://github.com/veaquer/ray_translate.git
 cd ray_translate
-makepkg -si
+cargo buid --release
+cd target/release
 ```
 
