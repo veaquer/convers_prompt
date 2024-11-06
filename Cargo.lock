@@ -237,6 +237,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "anyhow"
+version = "1.0.93"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4c95c10ba0b00a02636238b814946408b1322d5ac4760326e6fb8ec956d85775"
+
+[[package]]
 name = "arboard"
 version = "3.4.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -787,10 +793,11 @@ dependencies = [
 
 [[package]]
 name = "convers"
-version = "0.1.5"
+version = "0.1.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "de117ee42e02c78d47ceb0344a8f4847fa568b3516aebd9b7e5195b099ba306d"
+checksum = "69d26e8d0dfda6a66563994f7177d3a112a2be9096b0fc53126b02b2a8752df5"
 dependencies = [
+ "anyhow",
  "regex",
  "reqwest",
  "serde_json",
@@ -1904,7 +1911,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4979f22fdb869068da03c9f7528f8297c6fd2606bc3a4affe42e6a823fdb8da4"
 dependencies = [
  "cfg-if",
- "windows-targets 0.52.6",
+ "windows-targets 0.48.5",
 ]
 
 [[package]]
