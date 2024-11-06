@@ -1,13 +1,13 @@
 pkgname=convers_prompt
-pkgver="0.1.6"
+pkgver="0.1.7"
 pkgrel=1
 pkgdesc="prompt quick access gui app, that use convers magic_convert"
 arch=('x86_64')
 license=('MIT')
-depends=('rust' 'cargo' 'translate-shell')
+depends=('rust' 'cargo')
 makedepends=('rust' 'cargo')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/veaquer/convers_prompt/archive/refs/tags/$pkgver.tar.gz")
-sha256sums=('ff57c2a7bcfbe3690845aabef7a3df2d1e349f3d0b8c8419c3cd42fb66f293ff')
+sha256sums=('cd3deb4d1cc09717397748b2db48760c0d46b68f37dc018ad0396e1e7c9fe2b5')
 
 build() {
     cd "$srcdir/$pkgname-$pkgver"
