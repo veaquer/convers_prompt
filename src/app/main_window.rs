@@ -3,7 +3,7 @@ use std::sync::{Arc, Mutex};
 use convers::convert::magic_convert;
 use egui::{
     Align, CentralPanel, Color32, FontDefinitions, FontFamily, Frame, Layout, Margin, RichText,
-    Rounding, ScrollArea, Stroke, Style, TextStyle, Vec2, Vec2b,
+    Rounding, ScrollArea, Stroke, Style, TextStyle, Vec2, Vec2b, Visuals,
 };
 use tokio::runtime::Runtime;
 
@@ -51,7 +51,10 @@ impl eframe::App for MainWindow {
             .insert(0, "agave".to_owned());
         ctx.set_fonts(fonts);
         ctx.set_style(style);
+        let mut visuals = Visuals::dark();
+        visuals.extreme_bg_color = Color32::from_rgb(255, 255, 255);
 
+        ctx.set_visuals(visuals);
         let mut area_rect = None;
 
         CentralPanel::default()
@@ -65,7 +68,7 @@ impl eframe::App for MainWindow {
                     let input_id = ui.make_persistent_id("input_field");
 
                     Frame::none()
-                        .inner_margin(Margin::same(2.))
+                        .inner_margin(Margin::same(2.)
                         .rounding(Rounding::from(10.))
                         .fill(Color32::from_hex("#181825").unwrap())
                         .stroke(Stroke::new(1., Color32::from_hex("#9399b2").unwrap()))

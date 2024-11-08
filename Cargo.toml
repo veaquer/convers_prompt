@@ -1,11 +1,11 @@
 [package]
 name = "convers_prompt"
-version = "0.1.0"
+version = "0.1.2"
 edition = "2021"
 
 [dependencies]
 clap = "4.5.20"
-convers = "0.1.5"
+convers = "0.2.1"
 eframe = "0.29.1"
 egui = "0.29.1"
 egui_extras = "0.29.1"

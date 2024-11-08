@@ -793,12 +793,13 @@ dependencies = [
 
 [[package]]
 name = "convers"
-version = "0.1.9"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "69d26e8d0dfda6a66563994f7177d3a112a2be9096b0fc53126b02b2a8752df5"
+checksum = "2760855d374af72bb3a66f2dedb4f46ed7c81aee8702768571599f8a76d33080"
 dependencies = [
  "anyhow",
  "regex",
+ "regex-split",
  "reqwest",
  "serde_json",
  "tokio",
@@ -806,7 +807,7 @@ dependencies = [
 
 [[package]]
 name = "convers_prompt"
-version = "0.1.0"
+version = "0.1.2"
 dependencies = [
  "clap",
  "convers",
@@ -1911,7 +1912,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4979f22fdb869068da03c9f7528f8297c6fd2606bc3a4affe42e6a823fdb8da4"
 dependencies = [
  "cfg-if",
- "windows-targets 0.48.5",
+ "windows-targets 0.52.6",
 ]
 
 [[package]]
@@ -2746,6 +2747,15 @@ dependencies = [
  "aho-corasick",
  "memchr",
  "regex-syntax",
+]
+
+[[package]]
+name = "regex-split"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "544861d1810a3e429bb5e80266e537138b0e69e59bed9334326ae129a4c3e676"
+dependencies = [
+ "regex",
 ]
 
 [[package]]
