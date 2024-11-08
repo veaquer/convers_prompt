@@ -68,7 +68,7 @@ impl eframe::App for MainWindow {
                     let input_id = ui.make_persistent_id("input_field");
 
                     Frame::none()
-                        .inner_margin(Margin::same(2.)
+                        .inner_margin(Margin::same(2.))
                         .rounding(Rounding::from(10.))
                         .fill(Color32::from_hex("#181825").unwrap())
                         .stroke(Stroke::new(1., Color32::from_hex("#9399b2").unwrap()))
